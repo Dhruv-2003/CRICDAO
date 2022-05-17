@@ -1,3 +1,5 @@
+/* A css file for making global css design that can be used as a tag in index.js */
+
 html,
 body {
   padding: 0;
@@ -13,4 +15,25 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between ;
+  padding: 10px 10px 10px 10px;
+}
+
+ul{
+  list-style: none;
+  display: flex ;
+  flex-direction: row ;
+  justify-content: flex-end ;
+
+}
+
+li{
+  padding-left: 15px ;
+  font-weight: 600 ;
+  font-size: large;
 }
