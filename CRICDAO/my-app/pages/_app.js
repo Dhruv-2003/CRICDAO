@@ -1,12 +1,20 @@
 import Layout from '../components/Layout'
-import '../styles/globals.css'
+import { MoralisProvider } from "react-moralis";
+import '../styles/globals.css';
+rewuire("dotenv").config({ path: ".env"}) ;
 
 function MyApp({ Component, pageProps }) {
-  return (<Layout>
+  return (
+    <MoralisProvider
+      appId={process.env.NEXT_PUBLIC_APP_ID}
+      serverUrl={process.env.NEXT_PUBLIC_SERVER_URL}
+    >
+      <Layout>
 
-    <Component {...pageProps} />
+        <Component {...pageProps} />
 
-  </Layout>
+      </Layout>
+    </MoralisProvider>
   )
 }
 

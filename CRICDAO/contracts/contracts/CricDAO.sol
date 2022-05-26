@@ -26,6 +26,10 @@ interface ICricDAOownNFT {
     {}
 }
 
+interface IMatchCreator {
+    
+}
+
 contract CricDevsDAO is Ownable {
     // We will write contract code here
 

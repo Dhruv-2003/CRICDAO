@@ -19,7 +19,7 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
     bool public _paused;
 
     // max number of CryptoDevs
-    uint256 public maxTokenIds = 1000;
+    uint256 public maxTokenIds = 12;
 
     // total number of tokenIds minted
     uint256 public tokenIds;
@@ -64,7 +64,7 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
     /**
      * @dev presaleMint allows a user to mint one NFT per transaction during the presale.
      */
-    function presaleMint() public payable onlyWhenNotPaused {
+    function presaleMint(uint256 _tokenIds) public payable onlyWhenNotPaused {
         require(
             presaleStarted && block.timestamp < presaleEnded,
             "Presale is not running"
@@ -75,7 +75,7 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
         );
         require(tokenIds < maxTokenIds, "Exceeded maximum Cric Players supply");
         require(msg.value >= _price, "Ether sent is not correct");
-        tokenIds += 1;
+        tokenIds = _tokenIds ;
         //_safeMint is a safer version of the _mint function as it ensures that
         // if the address being minted to is a contract, then it knows how to deal with ERC721 tokens
         // If the address being minted to is not a contract, it works the same way as _mint
@@ -85,14 +85,14 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
     /**
      * @dev mint allows a user to mint 1 NFT per transaction after the presale has ended.
      */
-    function mint() public payable onlyWhenNotPaused {
+    function mint(uint256 _tokenIds) public payable onlyWhenNotPaused {
         require(
             presaleStarted && block.timestamp >= presaleEnded,
             "Presale has not ended yet"
         );
         require(tokenIds < maxTokenIds, "Exceed maximum Cric Players supply");
         require(msg.value >= _price, "Ether sent is not correct");
-        tokenIds += 1;
+        tokenIds = _tokenIds; 
         _safeMint(msg.sender, tokenIds);
     }
 

@@ -2,8 +2,8 @@ const { ethers } = require("hardhat");
 require("dotenv").config({ path: ".env" });
 
 async function main() {
-//   // URL from where we can extract the metadata for a LW3Punks
-//   const metadataURL = "ipfs://YOUR-METADATA-CID/";
+  // URL from where we can extract the metadata for a LW3Punks
+  const metadataURL = "ipfs://YOUR-METADATA-CID/";
 
 //   // Address of the whitelist contract that you deployed in the previous module
 //   const whitelistContract = WHITELIST_CONTRACT_ADDRESS;
@@ -15,7 +15,7 @@ async function main() {
   const CricDAOown = await ethers.getContractFactory("CricDAOown");
 
   // deploy the contract
-  const deployedCricDAOownContract = await CricDAOown.deploy();
+  const deployedCricDAOownContract = await CricDAOown.deploy(metadataURL);
 
   await deployedCricDAOownContract.deployed();
 
