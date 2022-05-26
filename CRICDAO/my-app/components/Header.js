@@ -1,8 +1,22 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import { ethers } from '../node_modules/ethers' ;
+import { networks } from '../utils/network';
+import polygonlogo from "../public/polygonlogo.png";
+import ethlogo from "../public/ethlogo.png";
+
 
 const Header = () => {
+  const [network, setNetwork] = useState('');
+  const [currentAccount, setCurrentAccount] = useState('');
+  // const { ethereum } = window;
+  // const accounts = ethereum.request({ method: "eth_requestAccounts" });
+  // setCurrentAccount(accounts[0]);
+
+  // const chainId = ethereum.request({ method: 'eth_chainId' });
+  // setNetwork(networks[chainId]);
+
   return (
     <div className={styles.headercontainer}>
       <header>
@@ -45,7 +59,10 @@ const Header = () => {
 
 
         <div className={styles.right}>
-          <Link href='/account'>Connected
+          <Link href='/account'>
+            {/* <img alt="Network logo" className="logo" src={network.includes("Polygon") ? polygonLogo : ethLogo} />
+            {currentAccount ? <p> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Not connected </p>} */}
+            c
           </Link>
         </div>
       </header>
