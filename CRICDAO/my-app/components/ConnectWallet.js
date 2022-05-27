@@ -110,13 +110,20 @@ const ConnectWallet = () => {
     // Render methods
     const renderNotConnectedContainer = () => (
         <div>
-            <img src="/polygonlogo.png" alt="Coding monkey gif" />
             {/* Call the connectWallet function we just wrote when the button is clicked */}
-            <button onClick={connectWallet} className="cta-button connect-wallet-button">
+            <button onClick={connectWallet} className={styles.button}>
                 Connect Wallet
             </button>
         </div>
     );
+
+    // Render methods
+    const renderConnectedContainer = () => (
+        <div className={styles.button}>
+            Connected
+        </div>
+    );
+
 
     useEffect(() => {
         checkIfWalletIsConnected();
@@ -124,9 +131,9 @@ const ConnectWallet = () => {
 
 
     return (
-        <div className={styles.main}>
+        <div>
             {/* This will hide the connect button if currentAccount isn't empty*/}
-				{!currentAccount && renderNotConnectedContainer()}
+				{!currentAccount ? renderNotConnectedContainer() : renderConnectedContainer()}
         </div>
     )
 }

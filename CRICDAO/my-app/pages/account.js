@@ -7,20 +7,20 @@ import { ethers } from 'ethers';
 
 const account = () => {
   const contract_address = "";
-  const Web3Api = useMoralisWeb3Api();
+  // const Web3Api = useMoralisWeb3Api();
   const [NFTs,setNFTs] = useState("");
   const [counter,setCounter] = useState(0) ;
   const price = 0.01 ;
 
-  const fetchNFTsForContract = async () => {
-    const options = {
-      chain: "mumbai",
-      address: {currentAccount},
-      token_address: {contract_address},
-    };
-    const fetchedNFTs = await Web3Api.account.getNFTsForContract(options);
-    setNFTs(fetchedNFTs) ;
-  };
+  // const fetchNFTsForContract = async () => {
+  //   const options = {
+  //     chain: "mumbai",
+  //     address: {currentAccount},
+  //     token_address: {contract_address},
+  //   };
+  //   const fetchedNFTs = await Web3Api.account.getNFTsForContract(options);
+  //   setNFTs(fetchedNFTs) ;
+  // };
   return (
     <div>
       {/* card section */}
@@ -39,7 +39,7 @@ const account = () => {
         </div>
       </div>
 
-      {/* NFTs Section */}
+      {/* NFTs Section
       <div className={styles.nfts} >
       {
                     NFTs ? NFTs.map(NFT => {
@@ -50,7 +50,7 @@ const account = () => {
                         )
                     }) : <div className='text-white'>No NFTs found</div>
                 }
-      </div>
+      </div> */}
     </div>
   )
 }
