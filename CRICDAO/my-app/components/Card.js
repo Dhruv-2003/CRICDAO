@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/card.module.css' ;
 
-export const Card = ({ image, name, position, price, description }) => {
+export const Card = ({ image, name, position, price, address ,description  }) => {
   return (
     <div>
         <a href="" class={styles.card}>

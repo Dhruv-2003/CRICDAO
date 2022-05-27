@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { ethers } from '../node_modules/ethers' ;
 import { networks } from '../utils/network';
-import polygonlogo from "../public/polygonlogo.png";
-import ethlogo from "../public/ethlogo.png";
+import polygonLogo from "../public/polygonlogo.png";
+import ethLogo from "../public/ethlogo.png";
 
 
 const Header = () => {
@@ -61,8 +61,9 @@ const Header = () => {
         <div className={styles.right}>
           <Link href='/account'>
             {/* <img alt="Network logo" className="logo" src={network.includes("Polygon") ? polygonLogo : ethLogo} />
-            {currentAccount ? <p> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Not connected </p>} */}
-            c
+            {currentAccount ? <p> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Not connected </p>}
+             */}
+             connected 
           </Link>
         </div>
       </header>
