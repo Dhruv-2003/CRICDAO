@@ -40,7 +40,7 @@ const account = () => {
       </div>
 
       {/* NFTs Section */}
-      <div className={styles.nfts} onLoad={fetchNFTsForContract} >
+      <div className={styles.nfts} >
       {
                     NFTs ? NFTs.map(NFT => {
                         

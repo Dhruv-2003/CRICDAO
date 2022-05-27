@@ -1,13 +1,18 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract CricDAO is ERC1155, Ownable {
+contract CricDAOown is ERC1155, Ownable {
     // _paused is used to pause the contract in case of an emergency
     bool public _paused;
 
+    using Strings for uint256;
+
+    string _baseTokenURI ;
+    
     uint256 rate = 0.01 ether;
     uint256 supply = 10000;
     uint256 minted = 0;
@@ -17,9 +22,10 @@ contract CricDAO is ERC1155, Ownable {
         _;
     }
 
-    string baseTokenUri = "//ipfs";
 
-    constructor() ERC1155(baseTokenUri) {}
+    constructor(string memory baseURI) ERC1155(baseURI) {
+        _baseTokenURI = baseURI;
+    }
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
@@ -31,6 +37,42 @@ contract CricDAO is ERC1155, Ownable {
         _mint(msg.sender, 1, 1, "");
         minted += 1 ;
     }
+
+    /**
+     * @dev _baseURI overides the Openzeppelin's ERC721 implementation which by default
+     * returned an empty string for the baseURI
+     */
+    function _baseURI() internal view virtual returns (string memory) {
+        return _baseTokenURI;
+    }
+
+    /**
+     * @dev tokenURI overides the Openzeppelin's ERC721 implementation for tokenURI function
+     * This function returns the URI from where we can extract the metadata for a given tokenId
+     */
+    function uri(uint256 tokenId)
+        public
+        view
+        override
+        returns (string memory)
+    {
+        // require(
+        //     _exists(tokenId),
+        //     "ERC1155Metadata: URI query for nonexistent token"
+        // );
+
+        string memory baseURI = _baseURI();
+        // Here it checks if the length of the baseURI is greater than 0, if it is return the baseURI and attach
+        // the tokenId and `.json` to it so that it knows the location of the metadata json file for a given
+        // tokenId stored on IPFS
+        // If baseURI is empty return an empty string
+        return
+            bytes(baseURI).length > 0
+                ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json"))
+                : "";
+    }
+
+
 
     /**
      * @dev setPaused makes the contract paused or unpaused

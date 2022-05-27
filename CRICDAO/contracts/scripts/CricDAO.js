@@ -3,7 +3,7 @@ const { ethers } = require("hardhat");
 async function main() {
   // Now deploy the CricDAO contract
 
-  CricDAOown_CONTRACT_ADDRESS
+  const CricDAOown_CONTRACT_ADDRESS = "0x65c36f49a2aCF970485C91d0FDEdA3C6DE50B254"
   const CricDAO = await ethers.getContractFactory("CricDAO");
   const cricDAO = await CricDAO.deploy(
     CricDAOown_CONTRACT_ADDRESS,

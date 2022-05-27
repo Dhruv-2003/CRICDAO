@@ -3,7 +3,7 @@ require("dotenv").config({ path: ".env" });
 
 async function main() {
   // URL from where we can extract the metadata for a LW3Punks
-  const metadataURL = "ipfs://YOUR-METADATA-CID/";
+  const metadataURL = "ipfs://QmYLXF4xSBCYXN1GJEt3gA29xMvrtpnAf6Q8GBoVhgzchp/";
 
 //   // Address of the whitelist contract that you deployed in the previous module
 //   const whitelistContract = WHITELIST_CONTRACT_ADDRESS;

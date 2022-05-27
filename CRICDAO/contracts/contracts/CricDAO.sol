@@ -8,29 +8,17 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * Minimal interface for CryptoDevsNFT containing only two functions
  * that we are interested in
  */
-interface ICricDAOownNFT {
+interface ICricDAOown {
     /// @dev balanceOf returns the number of NFTs owned by the given address
     /// @param owner - address to fetch number of NFTs for
     /// @return Returns the number of NFTs owned
-    function balanceOf(address owner) external view returns (uint256);
-
-    /// @dev tokenOfOwnerByIndex returns a tokenID at given index for owner
-    /// @param owner - address to fetch the NFT TokenID for
-    /// @param index - index of NFT in owned tokens array to fetch
-    /// @return Returns the TokenID of the NFT
-
-    function tokenOfOwnerByIndex(address owner, uint256 index)
+    function balanceOf(address owner, uint256 id)
         external
         view
-        returns (uint256)
-    {}
+        returns (uint256);
 }
 
-interface IMatchCreator {
-    
-}
-
-contract CricDevsDAO is Ownable {
+contract CricDAO is Ownable {
     // We will write contract code here
 
     // Create a struct named Proposal containing all relevant information
@@ -52,25 +40,49 @@ contract CricDevsDAO is Ownable {
     // Number of proposals that have been created
     uint256 public numProposals;
 
-    ICryptoDevsNFT CricDAOownNFT;
+    ICricDAOown CricDAOown;
+
+
+    // Create an enum named Vote containing possible options for a vote
+    enum Vote {
+        YAY, // YAY = 0
+        NAY // NAY = 1
+    }
 
     // Create a modifier which only allows a function to be
     // called by someone who owns at least 1 CryptoDevsNFT
 
     modifier nftHolderOnly() {
-        require(CricDAOownNFT.balanceOf(msg.sender) > 0, "NOT_A_DAO_MEMBER");
+        require(CricDAOown.balanceOf(msg.sender,1) > 0, "NOT_A_DAO_MEMBER");
+        _;
+    }
+
+    // Create a modifier which only allows a function to be
+    // called if the given proposal's deadline has not been exceeded yet
+    modifier activeProposalOnly(uint256 proposalIndex) {
+        require(
+            proposals[proposalIndex].deadline > block.timestamp,
+            "DEADLINE_EXCEEDED"
+        );
         _;
     }
 
     // Create a payable constructor which initializes the contract
     // instances for FakeNFTMarketplace and CryptoDevsNFT
     // The payable allows this constructor to accept an ETH deposit when it is being deployed
-    constructor(address _cricDaoOwnNFT) payable {
-        CricDAOownNFT = ICricDAOownNFT(_cricDaoOwnNFT);
+    constructor(address _cricDaoOwn) payable {
+        CricDAOown = ICricDAOown(_cricDaoOwn);
     }
 
+    // // @dev createProposal allows a CryptoDevsNFT holder to create a new proposal in the DAO
+    // /// @param _nftTokenId - the tokenID of the NFT to be purchased from FakeNFTMarketplace if this proposal passes
+    // /// @return Returns the proposal index for the newly created proposal
+    // function createProposal() external nftHolderOnly returns (uint256) {
+    //     Proposal storage proposal = proposals[numProposals]; 
+    //     numProposals++;
 
-    
+    //     return numProposals - 1;
+    // }
 
     /// @dev withdrawEther allows the contract owner (deployer) to withdraw the ETH from the contract
     function withdrawEther() external onlyOwner {

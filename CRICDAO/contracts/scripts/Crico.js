@@ -3,7 +3,7 @@ require("dotenv").config({ path: ".env" });
 
 async function main() {
   // Address of the Crypto Devs NFT contract that you deployed in the previous module
-  const CricDAONFTContract = "CRICDAONFT_CONTRACT_ADDRESS";
+  const CricDAONFTContract = "0x4dED7b100c10Bd71Aae9c7AE8E9aa260304bEA04";
   /*
     A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
     so cryptoDevsTokenContract here is a factory for instances of our CryptoDevToken contract.
