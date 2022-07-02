@@ -8,6 +8,16 @@
 
 
 
+https://ipfs.io/ipfs/QmRxmqKawq9CDkhDFmMvVmRpCtZZ3avvTeH8NxGBsvEHNM -- player img
+
+https://ipfs.io/ipfs/QmURR4kDrUKY7mhGPdg73eyPqG8obKdVipGpD6JPahoCi3 -- player metadata
+
+https://ipfs.io/ipfs/QmcyR1svY85snndkjENuoqB1jeNAVqcaYR7SNJX4yTfV2c -- DAOownNFT img
+
+https://ipfs.io/ipfs/QmYLXF4xSBCYXN1GJEt3gA29xMvrtpnAf6Q8GBoVhgzchp -- DAOownNFT metadata
+
+
+
 # Basic Sample Hardhat Project
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
