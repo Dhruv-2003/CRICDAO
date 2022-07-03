@@ -7,61 +7,116 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 const Header = () => {
   const [network, setNetwork] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (
-    <div className={styles.headercontainer}>
-      <header>
-        <div>
+    <div>
+      <nav className={styles.header}>
+        <div className={styles.logo}>
           <img
             alt="icon"
             src="/cricfinal2.jpg"
             width={100}
             height={100}
-            className={styles.logo}
-          />
+            className={styles.logo__img}
+            />
+          <a href={"/"}>
+          <p className={styles.logo__title}>CricDAO</p>
+          </a>
+          <button
+            onClick={() => {
+              setIsNavExpanded(!isNavExpanded);
+              console.log(isNavExpanded);
+            }}
+            className={styles.hamBtn}
+          >
+            {isNavExpanded ? "☰" : "✖"}
+          </button>
         </div>
-        <div className={styles.left}>
-          <p className={styles.title}> CricDAO</p>
-          <p className={styles.subtitle}>A DAO for Cricket lovers</p>
-        </div>
-        {/* Display a logo and wallet connection status*/}
-        {/* <div className="right">
-							<img alt="Network logo" className="logo" src={network.includes("Polygon") ? polygonLogo : ethLogo} />
-							{currentAccount ? <p> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Not connected </p>}
-						</div> */}
-        <div className={styles.center}>
+
+        <div
+          className={`${styles.list} ${
+            isNavExpanded ? styles.displayMenu : "list"
+          }`}
+        >
           <ul>
             <li>
               <Link href="/">
-                <div>Home </div>
+                <div className={styles.link}>Home </div>
               </Link>
             </li>
             <li>
               <Link href="/battle">
-                <div>Battle </div>
+                <div className={styles.link}>Battle </div>
               </Link>
             </li>
             <li>
               <Link href="/marketplace">
-                <div>Marketplace </div>
+                <div className={styles.link}>Marketplace </div>
               </Link>
             </li>
             <li>
               <Link href="/chatroom">
-                <div> ChatRoom </div>
+                <div className={styles.link}> ChatRoom </div>
               </Link>
             </li>
           </ul>
+          <div className={styles.connectBtn}>
+            <Link href="/account">
+              <ConnectButton chainStatus="name" />
+            </Link>
+          </div>
         </div>
-
-        <div className={styles.right}>
-          <Link href="/account">
-            <ConnectButton chainStatus="name" />
-          </Link>
-        </div>
-      </header>
+      </nav>
     </div>
   );
 };
 
 export default Header;
+
+// <div className={styles.headercontainer}>
+// <header>
+//   <div>
+//     <img
+//       alt="icon"
+//       src="/cricfinal2.jpg"
+//       width={100}
+//       height={100}
+//       className={styles.logo}
+//     />
+//   </div>
+//   <div className={styles.left}>
+//     <p className={styles.title}> CricDAO</p>
+//   </div>
+//   <div className={styles.center}>
+//     <ul>
+//       <li>
+//         <Link href="/">
+//           <div>Home </div>
+//         </Link>
+//       </li>
+//       <li>
+//         <Link href="/battle">
+//           <div>Battle </div>
+//         </Link>
+//       </li>
+//       <li>
+//         <Link href="/marketplace">
+//           <div>Marketplace </div>
+//         </Link>
+//       </li>
+//       <li>
+//         <Link href="/chatroom">
+//           <div> ChatRoom </div>
+//         </Link>
+//       </li>
+//     </ul>
+//   </div>
+
+//   <div className={styles.right}>
+//     <Link href="/account">
+//       <ConnectButton chainStatus="name" />
+//     </Link>
+//   </div>
+// </header>
+// </div>

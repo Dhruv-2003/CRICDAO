@@ -6,6 +6,7 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import Header from "../components/Header";
 
 const { chains, provider } = configureChains(
   [chain.polygonMumbai],
@@ -23,6 +24,7 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }) {
   return (
+    <>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <Layout>
@@ -30,6 +32,7 @@ function MyApp({ Component, pageProps }) {
         </Layout>
       </RainbowKitProvider>
     </WagmiConfig>
+    </>
   );
 }
 

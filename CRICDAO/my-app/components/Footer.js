@@ -10,8 +10,9 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
+           Made by
           <Image src="/twitter-logo.svg" alt="Twitter logo" width={30} height={35} />
-          Made by @0xdhruva with ❤️
+          @0xdhruva with ❤️
         </a>
       </footer>
   )
