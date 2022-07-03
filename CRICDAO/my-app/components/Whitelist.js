@@ -105,9 +105,11 @@ const Whitelist = () => {
         return <button className={styles.button2}>Loading...</button>;
       } else {
         return (
+          <>
           <button onClick={addAddressToWhitelist} className={styles.button2}>
             Join Whitelist
           </button>
+          </>
         );
       }
     } else {

@@ -20,8 +20,12 @@ export default function Home() {
         <h1>
           CricDAO allows you to trade PlayerNFT cards and predict match results
         </h1>
-        <div className={styles.bannerimg} >
-          <Image className={styles.bannerimg}  src={cricbanner} alt="Cricket Banner" />
+        <div className={styles.bannerimg}>
+          <Image
+            className={styles.bannerimg}
+            src={cricbanner}
+            alt="Cricket Banner"
+          />
         </div>
         <h1>Community of Cricket lovers.</h1>
         <p>
@@ -32,7 +36,14 @@ export default function Home() {
         </p>
       </div>
 
-      <div className={styles.bannerimage}></div>
+      <div className={styles.whitelist}>
+        <div>
+          <h1>Get Early accsses to NFTs by getting Whitelisted.</h1>
+          <div>
+          <Whitelist />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
