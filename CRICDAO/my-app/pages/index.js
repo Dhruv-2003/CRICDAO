@@ -11,6 +11,7 @@ import {
   CricDAOWhitelist_ABI,
 } from "../constants/constants";
 import cricbanner from "../public/cricbanner.png";
+import MintNFT from "../components/MintNFT";
 
 export default function Home() {
   return (
@@ -40,9 +41,15 @@ export default function Home() {
         <div>
           <h1>Get Early accsses to NFTs by getting Whitelisted.</h1>
           <div>
-          <Whitelist />
+            <Whitelist />
           </div>
         </div>
+      </div>
+      <h1 className={styles.nftHead}>
+        Mint NFT
+      </h1>
+      <div className={styles.nft}>
+        <MintNFT />
       </div>
     </div>
   );
