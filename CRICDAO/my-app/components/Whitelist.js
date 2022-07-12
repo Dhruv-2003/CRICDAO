@@ -69,7 +69,7 @@ const Whitelist = () => {
     }
   };
 
-  const connectWallet = async () => {
+  const ConnectWallet = async () => {
     try {
       // Get the provider from web3Modal, which in our case is MetaMask
       // When used for the first time, it prompts the user to connect their wallet
@@ -84,7 +84,7 @@ const Whitelist = () => {
 
   useEffect(() => {
     if (!isConnected) {
-      connectWallet();
+      ConnectWallet();
       setWalletConnected(true);
       console.log(signer);
       checkIfAddressInWhitelist();
@@ -94,7 +94,7 @@ const Whitelist = () => {
   }, [walletConnected]);
 
   const renderButton = () => {
-    if (walletConnected) {
+    if (isConnected) {
       if (joinedWhitelist) {
         return (
           <div className={styles.description}>
@@ -106,9 +106,9 @@ const Whitelist = () => {
       } else {
         return (
           <>
-          <button onClick={addAddressToWhitelist} className={styles.button2}>
-            Join Whitelist
-          </button>
+            <button onClick={addAddressToWhitelist} className={styles.button2}>
+              Join Whitelist
+            </button>
           </>
         );
       }

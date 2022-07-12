@@ -3,31 +3,37 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./IWhitelist.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract CricDAONFT is ERC721Enumerable, Ownable {
+interface ICricDAOown {
+    function balanceOf(address account, uint256 id)
+        public
+        view
+        virtual
+        override
+        returns (uint256);
+}
+
+contract CricNFT is ERC721Enumerable, Ownable {
     using Strings for uint256;
     /**
      * @dev _baseTokenURI for computing {tokenURI}. If set, the resulting URI for each
      * token will be the concatenation of the `baseURI` and the `tokenId`.
      */
     string _baseTokenURI;
-
     //  _price is the price of one Crypto Dev NFT
     uint256 public _price = 0.05 ether;
+
+    ICricDAOown cricDAOOwn;
 
     // _paused is used to pause the contract in case of an emergency
     bool public _paused;
 
     // max number of CryptoDevs
-    uint256 public maxTokenIds = 12;
+    uint256 public maxTokenIds = 50;
 
     // total number of tokenIds minted
     uint256 public tokenIds;
-
-    // Whitelist contract instance
-    IWhitelist whitelist;
 
     // boolean to keep track of whether presale started or not
     bool public presaleStarted;
@@ -42,19 +48,16 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
 
     /**
      * @dev ERC721 constructor takes in a `name` and a `symbol` to the token collection.
-     * name in our case is `Crypto Devs` and symbol is `CD`.
-     * Constructor for Crypto Devs takes in the baseURI to set _baseTokenURI for the collection.
-     * It also initializes an instance of whitelist interface.
      */
-    constructor(string memory baseURI, address whitelistContract)
-        ERC721("Cric Players", "CP")
+    constructor(string memory baseURI, address cricDAOOwnAddress)
+        ERC721("Cric Players", "CricP")
     {
         _baseTokenURI = baseURI;
-        whitelist = IWhitelist(whitelistContract);
+        cricDAOOwn = ICricDAOown(cricDAOOwnAddress);
     }
 
     /**
-     * @dev startPresale starts a presale for the whitelisted addresses
+     * @dev startPresale starts a presale for the DAOmembers
      */
     function startPresale() public onlyOwner {
         presaleStarted = true;
@@ -72,12 +75,12 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
             "Presale is not running"
         );
         require(
-            whitelist.whitelistedAddresses(msg.sender),
-            "You are not whitelisted"
+            cricDAOOwn.balanceOf(msg.sender, 0) > 0,
+            "You are not a DAO member"
         );
         require(tokenIds < maxTokenIds, "Exceeded maximum Cric Players supply");
         require(msg.value >= _price, "Ether sent is not correct");
-        tokenIds = _tokenIds ;
+        tokenIds = _tokenIds;
         //_safeMint is a safer version of the _mint function as it ensures that
         // if the address being minted to is a contract, then it knows how to deal with ERC721 tokens
         // If the address being minted to is not a contract, it works the same way as _mint
@@ -94,7 +97,7 @@ contract CricDAONFT is ERC721Enumerable, Ownable {
         );
         require(tokenIds < maxTokenIds, "Exceed maximum Cric Players supply");
         require(msg.value >= _price, "Ether sent is not correct");
-        tokenIds = _tokenIds; 
+        tokenIds = _tokenIds;
         _safeMint(msg.sender, tokenIds);
     }
 

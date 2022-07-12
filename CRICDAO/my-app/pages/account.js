@@ -1,16 +1,16 @@
-import React,{useState} from 'react';
-import { currentAccount } from '../components/ConnectWallet';
+import React, { useState } from "react";
+import { currentAccount } from "../components/ConnectWallet";
 import styles from "../styles/Account.module.css";
 import { useMoralisWeb3Api } from "react-moralis";
-import Card from '../components/Card'
-import { ethers } from 'ethers';
+import Card from "../components/Card";
+import { ethers } from "ethers";
 
 const account = () => {
   const contract_address = "";
   // const Web3Api = useMoralisWeb3Api();
-  const [NFTs,setNFTs] = useState("");
-  const [counter,setCounter] = useState(0) ;
-  const price = 0.01 ;
+  // const [NFTs,setNFTs] = useState("");
+  // const [counter,setCounter] = useState(0) ;
+  const price = 0.01;
 
   // const fetchNFTsForContract = async () => {
   //   const options = {
@@ -26,16 +26,10 @@ const account = () => {
       {/* card section */}
       <div className={styles.card}>
         <div className={styles.cardmain}>
-          <img src='/avatar.png' className={styles.cardimg} />
-          <div className={styles.account}>
-            Account:{currentAccount}
-          </div>
-          <div className={styles.account}>
-            Balance: { }
-          </div>
-          <div className={styles.account}>
-            NFT Players Owned: {counter }
-          </div>
+          <img src="/avatar.png" className={styles.cardimg} />
+          <div className={styles.account}>Account:{currentAccount}</div>
+          <div className={styles.account}>Balance: {}</div>
+          <div className={styles.account}>NFT Players Owned: {counter}</div>
         </div>
       </div>
 
@@ -52,7 +46,7 @@ const account = () => {
                 }
       </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default account
+export default account;

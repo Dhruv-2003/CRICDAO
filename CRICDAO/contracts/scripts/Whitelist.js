@@ -10,15 +10,12 @@ async function main() {
   // here we deploy the contract
   const deployedWhitelistContract = await whitelistContract.deploy(100);
   // 10 is the Maximum number of whitelisted addresses allowed
-  
+
   // Wait for it to finish deploying
   await deployedWhitelistContract.deployed();
 
   // print the address of the deployed contract
-  console.log(
-    "Whitelist Contract Address:",
-    deployedWhitelistContract.address
-  );
+  console.log("Whitelist Contract Address:", deployedWhitelistContract.address);
 }
 
 // Call the main function and catch if there is any error

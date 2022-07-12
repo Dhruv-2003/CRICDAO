@@ -2,11 +2,12 @@ const { ethers } = require("hardhat");
 require("dotenv").config({ path: ".env" });
 
 async function main() {
-  // URL from where we can extract the metadata for a LW3Punks
-  const metadataURL = "ipfs://QmYLXF4xSBCYXN1GJEt3gA29xMvrtpnAf6Q8GBoVhgzchp/";
+  // // URL from where we can extract the metadata for a LW3Punks
+  const metadataURL =
+    "ipfs://bafkreiel4y5jys2jtyagt4fru4db2sauedgzkrpdukjm4rppxyxvjckvzi";
 
-//   // Address of the whitelist contract that you deployed in the previous module
-//   const whitelistContract = WHITELIST_CONTRACT_ADDRESS;
+  // Address of the whitelist contract that you deployed in the previous module
+  const whitelistContract = "0xa0Bf9Eab5fbbA57F3EAe2e8eEfBF053C6627e151";
 
   /*
   A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
@@ -15,12 +16,20 @@ async function main() {
   const CricDAOown = await ethers.getContractFactory("CricDAOown");
 
   // deploy the contract
-  const deployedCricDAOownContract = await CricDAOown.deploy(metadataURL);
+  const deployedCricDAOownContract = await CricDAOown.deploy(
+    metadataURL,
+    whitelistContract
+  );
 
   await deployedCricDAOownContract.deployed();
 
   // print the address of the deployed contract
-  console.log("CricDAOown Contract Address:", deployedCricDAOownContract.address);
+  console.log(
+    "CricDAOown Contract Address:",
+    deployedCricDAOownContract.address
+  );
+
+  // const tx = await deployedCricDAOownContract.setURI(metadataURL);
 }
 
 // Call the main function and catch if there is any error
