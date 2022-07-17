@@ -50,11 +50,13 @@ contract CricNFT is ERC721Enumerable, Ownable {
      * @dev ERC721 constructor takes in a `name` and a `symbol` to the token collection.
      */
     constructor(string memory baseURI, address cricDAOOwnAddress)
-        ERC721("Cric Players", "CricP")
+        ERC721("Cric Players", "CrP")
     {
         _baseTokenURI = baseURI;
         cricDAOOwn = ICricDAOown(cricDAOOwnAddress);
     }
+
+    function mintForDAO() public onlyOwner {}
 
     /**
      * @dev startPresale starts a presale for the DAOmembers
