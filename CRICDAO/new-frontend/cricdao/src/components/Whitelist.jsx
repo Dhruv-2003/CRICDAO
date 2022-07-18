@@ -3,17 +3,12 @@ import {
   CricDAOWhitelist_CONTRACT_ADDRESS,
   CricDAOWhitelist_ABI,
 } from "../../constants/constants";
-import styles from "../styles/Home.module.css";
-import {
-  useContract,
-  useSigner,
-  useProvider,
-  useAccount,
-  useConnect,
-} from "wagmi";
+import styles from "../../styles/Home.module.css";
+import { useContract, useSigner, useProvider, useAccount } from "wagmi";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 const Whitelist = () => {
+  const { address, isConnected } = useAccount();
   const [walletConnected, setWalletConnected] = useState(false);
   const [joinedWhitelist, setJoinedWhitelist] = useState(false);
   const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);
@@ -27,6 +22,11 @@ const Whitelist = () => {
     contractInterface: CricDAOWhitelist_ABI,
     signerOrProvider: signer || provider,
   });
+
+  // const checkConnection = async () => {
+  //   const { isConnected } = useAccount();
+  //   await setWalletConnected(isConnected);
+  // };
 
   const addAddressToWhitelist = async () => {
     try {
@@ -58,29 +58,28 @@ const Whitelist = () => {
   const checkIfAddressInWhitelist = async () => {
     try {
       // call the whitelistedAddresses from the contract
-      const _joinedWhitelist = await contract.whitelistedAddresses(signer);
-      setJoinedWhitelist(_joinedWhitelist);
+      const _joinedWhitelist = await contract.whitelistedAddresses(address);
+      await setJoinedWhitelist(_joinedWhitelist);
     } catch (err) {
       console.error(err);
     }
   };
 
   useEffect(() => {
-    const { isConnected } = useAccount();
-    if (!isConnected) {
-      setWalletConnected(true);
-      console.log(signer);
+    if (isConnected) {
       checkIfAddressInWhitelist();
+      setWalletConnected(true);
+      console.log(address);
     } else {
       setWalletConnected(false);
     }
-  }, [walletConnected]);
+  }, [isConnected]);
 
   const renderButton = () => {
-    if (isConnected) {
+    if (walletConnected) {
       if (joinedWhitelist) {
         return (
-          <div className={styles.description}>
+          <div className={styles.description2}>
             Thanks for joining the Whitelist!
           </div>
         );
@@ -117,3 +116,5 @@ const Whitelist = () => {
     </div>
   );
 };
+
+export default Whitelist;

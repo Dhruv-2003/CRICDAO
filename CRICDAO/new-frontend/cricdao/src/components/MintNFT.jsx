@@ -5,8 +5,10 @@ import {
   CricDAOOWN_ABI,
 } from "../../constants/constants";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-
+import styles from "../../styles/Home.module.css";
+import { ethers, utils } from "ethers";
 const MintNFT = () => {
+  const { address, isConnected } = useAccount();
   const [walletConnected, setWalletConnected] = useState(false);
   const [loading, setLoading] = useState(false);
   const [daoUser, setDaoUser] = useState(false);
@@ -19,10 +21,15 @@ const MintNFT = () => {
     signerOrProvider: signer || provider,
   });
 
+  // const checkConnection = async () => {
+  //   const { isConnected } = useAccount();
+  //   await setWalletConnected(isConnected);
+  // };
+
   const checkDaoUser = async () => {
     try {
       console.log("Checking if DAO user ...");
-      const check = await contract.balanceOf(signer, 0);
+      const check = await contract.balanceOf(address, 0);
       if (check) {
         console.log("Dao user");
         setDaoUser(true);
@@ -48,8 +55,7 @@ const MintNFT = () => {
   };
 
   useEffect(() => {
-    const { isConnected } = useAccount();
-    if (!isConnected) {
+    if (isConnected) {
       setLoading(true);
       checkDaoUser();
       setWalletConnected(true);
@@ -57,13 +63,13 @@ const MintNFT = () => {
     } else {
       setWalletConnected(false);
     }
-  }, []);
+  }, [isConnected]);
 
   const renderButton = () => {
-    if (isConnected) {
+    if (walletConnected) {
       if (daoUser) {
         return (
-          <div className={styles.description}>
+          <div className={styles.description2}>
             Thanks for joining the DAO ! Stay tuned for more updates
           </div>
         );

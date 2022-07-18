@@ -1,0 +1,27 @@
+.container {
+  padding: 0 2rem;
+  margin-top: 120px;
+  margin-bottom: 40px;
+  /* min-height: 84vh; */
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  /* justify-content: space-around; */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main * {
+  /* border: 1px solid red; */
+}
+
+.players {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}

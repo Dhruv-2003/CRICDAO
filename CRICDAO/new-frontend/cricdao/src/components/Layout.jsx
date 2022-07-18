@@ -44,18 +44,20 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li className={styles.navitem}>
-              <Link href="">
+              <Link href="/players">
                 <a className={styles.navlink}>Players</a>
               </Link>
             </li>
             <li className={styles.navitem}>
-              <Link href="">
+              <Link href="/">
                 <a className={styles.navlink}>Chatroom</a>
               </Link>
             </li>
           </ul>
           <button className={styles.connect}>
-            <ConnectButton />
+            <Link href="/account">
+              <ConnectButton />
+            </Link>
           </button>
 
           <button
