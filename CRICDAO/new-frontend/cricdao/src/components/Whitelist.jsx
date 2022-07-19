@@ -5,8 +5,8 @@ import {
 } from "../../constants/constants";
 import styles from "../../styles/Home.module.css";
 import { useContract, useSigner, useProvider, useAccount } from "wagmi";
-
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 const Whitelist = () => {
   const { address, isConnected } = useAccount();
   const [walletConnected, setWalletConnected] = useState(false);
@@ -84,7 +84,11 @@ const Whitelist = () => {
           </div>
         );
       } else if (loading) {
-        return <button className={styles.whitelist_btn}>Loading...</button>;
+        return (
+          <>
+        <div className={styles.whitelist_btn}>Loading...</div>
+          </>
+        );
       } else {
         return (
           <>
@@ -99,9 +103,11 @@ const Whitelist = () => {
       }
     } else {
       return (
-        <button className={styles.whitelist_btn}>
+        <>
+        <div className={styles.whitelist_btn}>
           <ConnectButton />
-        </button>
+        </div>
+        </>
       );
     }
   };

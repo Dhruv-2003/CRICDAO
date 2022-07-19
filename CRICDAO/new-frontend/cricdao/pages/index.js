@@ -89,20 +89,6 @@ export default function Home() {
 
       <div className={styles.roadmap_section}>
         <div className={styles.content}>
-          {/* <h1>Roadmap</h1>
-          <ul>
-            <li>Whitelisting</li>
-            <li>DAO NFT launch</li>
-            <li>Match prediction</li>
-            <li>Token launch</li>
-            <li>NFT Utility game</li>
-            <li>Buy Cricket match tickets online in form of cool NFTs</li>
-            <li>
-              Get players Onboard to the platform, they can be rewarded for
-              their contribution
-            </li>
-          </ul> */}
-          {/* <button className={styles.whitelist_btn}>Mint NFT</button> */}
         </div>
         <div className={styles.roadmap}>
           <Image className={styles.roadmap} src={roadmap} />
