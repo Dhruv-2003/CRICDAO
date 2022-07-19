@@ -53,11 +53,14 @@ export default function Layout({ children }) {
                 <a className={styles.navlink}>Chatroom</a>
               </Link>
             </li>
+            <li className={styles.navitem}>
+              <Link href="/account">
+                <a className={styles.navlink}>Account</a>
+              </Link>
+            </li>
           </ul>
           <button className={styles.connect}>
-            <Link href="/account">
-              <ConnectButton />
-            </Link>
+            <ConnectButton />
           </button>
 
           <button
