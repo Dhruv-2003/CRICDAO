@@ -24,6 +24,7 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }) {
   return (
+    <>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <Layout>
@@ -31,6 +32,7 @@ function MyApp({ Component, pageProps }) {
         </Layout>
       </RainbowKitProvider>
     </WagmiConfig>
+    </>
   );
 }
 
