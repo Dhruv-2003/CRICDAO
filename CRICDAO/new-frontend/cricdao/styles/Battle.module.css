@@ -16,3 +16,49 @@
 .main * {
     /* border: 1px solid red; */
 }
+
+.battle_card {
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid gray;
+    max-width: 600px;
+    border-radius: 20px;
+}
+
+.match h1 {
+    /* font-size: 20px; */
+    margin: 5px;
+    display: inline-block;
+}
+
+.hr {
+    width: min-content;
+}
+
+.predict_match {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.predict_match button {
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid rgb(112, 241, 255);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgb(78, 148, 253);
+    /* width: 120px; */
+}
+
+.predict_match button:hover {
+    background-color: rgb(109, 167, 255);
+}
