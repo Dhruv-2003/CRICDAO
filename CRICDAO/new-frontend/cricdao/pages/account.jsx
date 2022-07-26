@@ -6,10 +6,10 @@ import pfp from "../src/assets/avatar.png";
 export default function account() {
   const [toggleState, setToggleState] = useState(1);
 
-  function toggleTab(index) {
+  const ToggleTab = (index) => {
     setToggleState(index);
     console.log(index);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -37,7 +37,7 @@ export default function account() {
       <div className={styles.stats_section}>
         <div className={styles.tabs_section}>
           <div
-            onClick={() => toggleTab(1)}
+            onClick={() => ToggleTab(1)}
             className={
               toggleState === 1
                 ? `${styles.tabs} ${styles.active_tab}`
@@ -104,7 +104,6 @@ export default function account() {
             <h1>Heading 3</h1>
             <p>This is just temporary tab :D</p>
           </div> */}
-
         </div>
       </div>
     </div>
