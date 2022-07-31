@@ -356,6 +356,75 @@
 
 }
 
+/* battle card style */
+
+.battle_card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* border: 2px solid red; */
+  max-width: 300px;
+  margin: 25px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #1f252fe8;
+  color: white;
+  transition: ease-in-out 0.3s;
+}
+
+.battle_card:hover {
+  transform: scale(1.05);
+}
+
+.battle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid green; */
+  /* padding: 5px; */
+  /* margin: 20px; */
+}
+
+.team_logo {
+  max-width: 100px;
+  margin: 20px;
+}
+
+.vs {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.play_btn {
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  background-color: #00bbff;
+  border-radius: 8px;
+  border: 2px solid white;
+}
+
+
+.play_btn:focus {
+  text-decoration: none;
+}
+
+.play_btn:hover {
+  text-decoration: none;
+}
+
+.play_btn:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.play_btn:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
 @media (max-width: 767.98px) {
   .timeline::after {
     left: 90px;
@@ -407,6 +476,9 @@
   }
 
 }
+
+
+
 
 @media (max-width: 768px) {
 
