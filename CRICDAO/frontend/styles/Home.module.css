@@ -365,9 +365,9 @@
   flex-direction: column;
   flex-wrap: wrap;
   /* border: 2px solid red; */
-  max-width: 300px;
+  max-width: 600px;
   margin: 25px;
-  padding: 5px;
+  padding: 25px;
   border-radius: 15px;
   background-color: #1f252fe8;
   color: white;
@@ -423,6 +423,46 @@
 .play_btn:not([disabled]):active {
   box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
   transform: translate(2px, 2px);
+}
+
+
+/* player section */
+.player_card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* border: 2px solid red; */
+  max-width: 500px;
+  margin: 25px;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #1f252fe8;
+  color: white;
+  transition: ease-in-out 0.3s;
+}
+
+.player_card:hover {
+  transform: scale(1.05);
+}
+
+.player_card p, .battle_card p {
+  text-align: center;
+}
+
+.battle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid green; */
+  /* padding: 5px; */
+  /* margin: 20px; */
+}
+
+.player_img {
+  max-width: 300px;
+  margin: 20px;
 }
 
 @media (max-width: 767.98px) {

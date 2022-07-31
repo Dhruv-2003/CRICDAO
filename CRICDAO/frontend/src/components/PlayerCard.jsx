@@ -1,22 +1,23 @@
 import React from "react";
-import styles from "../../styles/PlayerCard.module.css";
+import styles from "../../styles/Home.module.css";
 import Image from "next/image";
-import sample from "../assets/sample.png";
+import sample from "../assets/virat.png";
 
 export default function () {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <div className={styles.card}>
-          <div className={styles.image}>
-            <Image src={sample} />
-          </div>
-          <hr className={styles.hr} />
-          <h1>Player Name</h1>
-          <h2>Player Type</h2>
-          <button className={styles.mint_btn}>Mint</button>
+    <>
+    <div className={styles.player_card}>
+      <h1>Player Name</h1>
+      {/* <Date></Date> */}
+      <span className={styles.battle}>
+        <div className={styles.player_img}>
+        <Image src={sample} />
         </div>
-      </main>
+      </span>
+      <h2>Player Type</h2>
+      <p>Lorem ipsum dolor sit perspiciatis ea rem eos itaque sapiente voluptatum? Cupiditate iure recusandae atque blanditiis labore exercitationem animi porro.</p>
+      <button className={styles.play_btn}>Mint NFT</button>
     </div>
+    </>
   );
 }

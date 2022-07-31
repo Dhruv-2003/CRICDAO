@@ -42,7 +42,7 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li className={styles.navitem}>
-              <Link href="">
+              <Link href="/chatroom">
                 <a className={styles.navlink}>Chatroom</a>
               </Link>
             </li>

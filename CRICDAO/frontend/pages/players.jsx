@@ -6,22 +6,14 @@ import styles from "../styles/Players.module.css";
 export default function players() {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1>Players</h1>
-        <div className={styles.players}>
-          <PlayerCard />
-          <PlayerCard />
-          <PlayerCard />
-          {/* <PlayerCard />
+        <h1>Player NFTs</h1>
+        <div className={styles.main}>
           <PlayerCard />
           <PlayerCard />
           <PlayerCard />
           <PlayerCard />
           <PlayerCard />
-          <PlayerCard />
-          <PlayerCard /> */}
         </div>
-      </main>
     </div>
   );
 }

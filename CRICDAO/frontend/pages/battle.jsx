@@ -23,21 +23,7 @@ export default function battle() {
           <div className={styles.card}>
             <BattleCard />
           </div>
-          <div className={styles.card}>
-            <BattleCard />
-          </div>
-          <div className={styles.card}>
-            <BattleCard />
-          </div>
-          <div className={styles.card}>
-            <BattleCard />
-          </div>
-          <div className={styles.card}>
-            <BattleCard />
-          </div>
-          <div className={styles.card}>
-            <BattleCard />
-          </div>
+          
         </div>
       </div>
     </>
