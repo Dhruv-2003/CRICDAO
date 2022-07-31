@@ -13,6 +13,7 @@ export default function account() {
 
   return (
     <div className={styles.container}>
+      {/* <h1>User Account</h1> */}
       <main className={styles.main}>
         <div className={styles.pfp}>
           <Image src={pfp} className={styles.pfp} />
