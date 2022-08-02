@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo1.svg";
 import discord from "../assets/discord.svg";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Layout({ children }) {
   const [isActive, setIsActive] = useState(false);
@@ -47,7 +48,9 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li className={styles.navitem}>
-              <button className={styles.connect}>Connect</button>
+              <button className={styles.connect}>
+                <ConnectButton />
+              </button>
             </li>
           </ul>
 

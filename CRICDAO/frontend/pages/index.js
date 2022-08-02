@@ -8,19 +8,22 @@ import roadmap from "../src/assets/roadmap.svg";
 import image from "../src/assets/cric.webp";
 import stumps from "../src/assets/stumps.svg";
 import logo from "../src/assets/logo.svg";
+import MintNFT from "../src/components/MintNFT";
+import Whitelist from "../src/components/Whitelist";
 
 export default function Home() {
   return (
     <div className={styles.contsainer}>
       <div className={styles.hero_section}>
-     
         <div className={styles.hero_content}>
           <h1>CricDAO is a one-stop platform for cricket lovers</h1>
           <p>
             You can trade player NFTs in the marketplace and participate in
             battles where you can predict macth result and win rewards.
           </p>
-          <button className={styles.redirect_button}>Marketplace</button>
+          <button className={styles.redirect_button}>
+            <Whitelist />
+          </button>
         </div>
         <div className={styles.hero_image}>
           <Image src={hero} />
@@ -53,7 +56,9 @@ export default function Home() {
             <li>Battles</li>
             <li>Token</li>
             <li>And more future perks</li>
-            <button className={styles.redirect_button}>Mint NFT</button>
+            <button className={styles.redirect_button}>
+              <MintNFT />
+            </button>
           </div>
           <div className={styles.nft}>
             <Image className={styles.nft} src={nft} />
@@ -61,78 +66,53 @@ export default function Home() {
         </div>
       </div>
 
-<div className={styles.roadmap_section}>
-
-      <h1>Roadmap</h1>
-      <div className={styles.timeline}>
-
-        <div className={`${styles.container} ${styles.left}`}>
-          <div className={styles.content}>
-            {/* <h2>1</h2> */}
-            <p>
-              Whitelisting
-            </p>
+      <div className={styles.roadmap_section}>
+        <h1>Roadmap</h1>
+        <div className={styles.timeline}>
+          <div className={`${styles.container} ${styles.left}`}>
+            <div className={styles.content}>
+              {/* <h2>1</h2> */}
+              <p>Whitelisting</p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.container} ${styles.right}`}>
-          <div className={styles.content}>
-            {/* <h2>2</h2> */}
-            <p>
-             DAO NFT Launch
-            </p>
+          <div className={`${styles.container} ${styles.right}`}>
+            <div className={styles.content}>
+              {/* <h2>2</h2> */}
+              <p>DAO NFT Launch</p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.container} ${styles.left}`}>
-          <div className={styles.content}>
-            {/* <h2>3</h2> */}
-            <p>
-              Match Prediction
-            </p>
+          <div className={`${styles.container} ${styles.left}`}>
+            <div className={styles.content}>
+              {/* <h2>3</h2> */}
+              <p>Match Prediction</p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.container} ${styles.right}`}>
-          <div className={styles.content}>
-            {/* <h2>4</h2> */}
-            <p>
-             Token Launch
-            </p>
+          <div className={`${styles.container} ${styles.right}`}>
+            <div className={styles.content}>
+              {/* <h2>4</h2> */}
+              <p>Token Launch</p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.container} ${styles.left}`}>
-          <div className={styles.content}>
-            {/* <h2>5</h2> */}
-            <p>
-              NFT Utility Game
-            </p>
+          <div className={`${styles.container} ${styles.left}`}>
+            <div className={styles.content}>
+              {/* <h2>5</h2> */}
+              <p>NFT Utility Game</p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.container} ${styles.right}`}>
-          <div className={styles.content}>
-            {/* <h2>6</h2> */}
-            <p>
-              Match Tickets
-            </p>
+          <div className={`${styles.container} ${styles.right}`}>
+            <div className={styles.content}>
+              {/* <h2>6</h2> */}
+              <p>Match Tickets</p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.container} ${styles.left}`}>
-          <div className={styles.content}>
-            {/* <h2>7</h2> */}
-            <p>
-              User Onboarding
-            </p>
+          <div className={`${styles.container} ${styles.left}`}>
+            <div className={styles.content}>
+              {/* <h2>7</h2> */}
+              <p>User Onboarding</p>
+            </div>
           </div>
         </div>
       </div>
-
-      </div>
-
-     
-
-      
-
-
-
-
     </div>
   );
 }
