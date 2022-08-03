@@ -8,6 +8,9 @@ interface IWhitelist {
     function whitelistedAddresses(address) external view returns (bool);
 }
 
+/// NFT that every DAO user needs to mint so that token Gating can be done
+/// Must be non- transferrable for the user who has this DAO own NFT
+/// CricDAOOwn checked and approved
 contract CricDAOown is ERC1155, Ownable {
     // _paused is used to pause the contract in case of an emergency
     bool public _paused;
@@ -61,6 +64,32 @@ contract CricDAOown is ERC1155, Ownable {
      */
     function setPaused(bool val) public onlyOwner {
         _paused = val;
+    }
+
+    function _beforeTokenTransfer(
+        address operator,
+        address from,
+        address to,
+        uint256[] memory ids,
+        uint256[] memory amounts,
+        bytes memory data
+    ) internal virtual {
+        require(
+            from == address(0) || to == address(0),
+            "Soul Bound token , can't transfer"
+        );
+    }
+
+    function burn(uint256 tokenId) external {
+        require(
+            balanceOf(msg.sender, tokenId) > 0,
+            "Only owner of the token can burn it"
+        );
+        _burn(msg.sender, tokenId, 1);
+    }
+
+    function revoke(address user, uint256 tokenId) external onlyOwner {
+        _burn(user, tokenId, 1);
     }
 
     /**

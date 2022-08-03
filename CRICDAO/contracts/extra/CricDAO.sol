@@ -3,11 +3,7 @@ pragma solidity ^0.8.10;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// We will add the Interfaces here
-/**
- * Minimal interface for CryptoDevsNFT containing only two functions
- * that we are interested in
- */
+/// DAO contract remaining and to be later idealised
 interface ICricDAOown {
     /// @dev balanceOf returns the number of NFTs owned by the given address
     /// @param owner - address to fetch number of NFTs for
@@ -31,8 +27,8 @@ contract CricDAO is Ownable {
         uint256 nayVotes;
         // executed - whether or not this proposal has been executed yet. Cannot be executed before the deadline has been exceeded.
         bool executed;
-        // voters - a mapping of CryptoDevsNFT tokenIDs to booleans indicating whether that NFT has already been used to cast a vote or not
-        mapping(uint256 => bool) voters;
+        // voters - a mapping of address to booleans indicating whether they have casted a vote or not
+        mapping(address => bool) voters;
     }
 
     // Create a mapping of ID to Proposal
@@ -41,7 +37,6 @@ contract CricDAO is Ownable {
     uint256 public numProposals;
 
     ICricDAOown CricDAOown;
-
 
     // Create an enum named Vote containing possible options for a vote
     enum Vote {
@@ -53,7 +48,7 @@ contract CricDAO is Ownable {
     // called by someone who owns at least 1 CryptoDevsNFT
 
     modifier nftHolderOnly() {
-        require(CricDAOown.balanceOf(msg.sender,1) > 0, "NOT_A_DAO_MEMBER");
+        require(CricDAOown.balanceOf(msg.sender, 1) > 0, "NOT_A_DAO_MEMBER");
         _;
     }
 
@@ -74,15 +69,16 @@ contract CricDAO is Ownable {
         CricDAOown = ICricDAOown(_cricDaoOwn);
     }
 
-    // // @dev createProposal allows a CryptoDevsNFT holder to create a new proposal in the DAO
-    // /// @param _nftTokenId - the tokenID of the NFT to be purchased from FakeNFTMarketplace if this proposal passes
-    // /// @return Returns the proposal index for the newly created proposal
-    // function createProposal() external nftHolderOnly returns (uint256) {
-    //     Proposal storage proposal = proposals[numProposals]; 
-    //     numProposals++;
+    // @dev createProposal allows a  holder to create a new proposal in the DAO
+    /// @param _proposal
+    /// @return Returns the proposal index for the newly created proposal
+    function createProposal() external nftHolderOnly returns (uint256) {
+        Proposal storage proposal = proposals[numProposals];
 
-    //     return numProposals - 1;
-    // }
+        numProposals++;
+
+        return numProposals - 1;
+    }
 
     /// @dev withdrawEther allows the contract owner (deployer) to withdraw the ETH from the contract
     function withdrawEther() external onlyOwner {

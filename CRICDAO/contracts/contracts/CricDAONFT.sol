@@ -7,13 +7,12 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 
 interface ICricDAOown {
     function balanceOf(address account, uint256 id)
-        public
+        external
         view
-        virtual
-        override
         returns (uint256);
 }
 
+/// contract checked and approved
 contract CricNFT is ERC721Enumerable, Ownable {
     using Strings for uint256;
     /**
@@ -22,7 +21,9 @@ contract CricNFT is ERC721Enumerable, Ownable {
      */
     string _baseTokenURI;
     //  _price is the price of one Crypto Dev NFT
-    uint256 public _price = 0.05 ether;
+    uint256 public _presaleprice = 0.05 ether;
+
+    uint256 public _price = 0.07 ether;
 
     ICricDAOown cricDAOOwn;
 
@@ -30,7 +31,7 @@ contract CricNFT is ERC721Enumerable, Ownable {
     bool public _paused;
 
     // max number of CryptoDevs
-    uint256 public maxTokenIds = 50;
+    // uint256 public maxTokenIds = 50;
 
     // total number of tokenIds minted
     uint256 public tokenIds;
@@ -78,8 +79,8 @@ contract CricNFT is ERC721Enumerable, Ownable {
             cricDAOOwn.balanceOf(msg.sender, 0) > 0,
             "You are not a DAO member"
         );
-        require(tokenIds < maxTokenIds, "Exceeded maximum Cric Players supply");
-        require(msg.value >= _price, "Ether sent is not correct");
+        // require(tokenIds < maxTokenIds, "Exceeded maximum Cric Players supply");
+        require(msg.value >= _presaleprice, "Ether sent is not correct");
         tokenIds = _tokenIds;
         //_safeMint is a safer version of the _mint function as it ensures that
         // if the address being minted to is a contract, then it knows how to deal with ERC721 tokens
@@ -95,7 +96,7 @@ contract CricNFT is ERC721Enumerable, Ownable {
             presaleStarted && block.timestamp >= presaleEnded,
             "Presale has not ended yet"
         );
-        require(tokenIds < maxTokenIds, "Exceed maximum Cric Players supply");
+        // require(tokenIds < maxTokenIds, "Exceed maximum Cric Players supply");
         require(msg.value >= _price, "Ether sent is not correct");
         tokenIds = _tokenIds;
         _safeMint(msg.sender, tokenIds);
