@@ -8,6 +8,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styles from "../../styles/Home.module.css";
 import { ethers, utils } from "ethers";
 
+/// Mints the NFT to get entry in the DAO easily for the User from the DAO OWN contract
 const MintNFT = () => {
   const { address, isConnected } = useAccount();
   const [walletConnected, setWalletConnected] = useState(false);

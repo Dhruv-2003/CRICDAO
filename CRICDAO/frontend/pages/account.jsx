@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import styles from "../styles/Account.module.css";
 import Image from "next/image";
 import pfp from "../src/assets/avatar.png";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useState } from "react";
 
+// account section show the Details of the User
+// Also show all the NFT owner by them , Alchemy SDK or API used to fetch the NFTs to be shown
+// For Matches , there will be a Match Contracts that , have record of each Matches
+// Show their DAO entry Status , also from the NFT status or either the Token Gating Call
 export default function account() {
+  const [isDAOUser, setIsDAOUser] = useState(false);
   const [toggleState, setToggleState] = useState(1);
 
   function toggleTab(index) {
@@ -20,10 +27,10 @@ export default function account() {
         </div>
 
         <div className={styles.content}>
-          <h1>Kushagra Sarathe</h1>
+          <h1>
+            <ConnectButton />
+          </h1>
           <ul>
-            <li>Address</li>
-            <li>Balance</li>
             <li>Rewards Earned</li>
             <li>NFTs Owned</li>
             <li>Matches Played</li>
@@ -105,7 +112,6 @@ export default function account() {
             <h1>Heading 3</h1>
             <p>This is just temporary tab :D</p>
           </div> */}
-
         </div>
       </div>
     </div>

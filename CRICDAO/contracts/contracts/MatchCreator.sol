@@ -1,23 +1,38 @@
-// // SPDX-License-Identifier: MIT
-// pragma solidity ^0.8.10;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.10;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-// contract MatchCreator {
-//     string public team1 ;
-//     string public team2 ;
-//     mapping(uint=> mapping(string => string)) ; 
-//     uint256 matches ;
+contract MatchCreator is Ownable {
+    // Match Struct that is created when the match is added
+    // winner is according to the team number 1 & 2
+    struct Match {
+        string team1;
+        string team2;
+        uint256 win;
+    }
+    /// mapping from match id --> struct Match
+    mapping(uint256 => Match) public matches;
 
-//     function setTeams(string memory _t1, string memory _t2) public {
-//         team1 = _t1 ;
-//         team2 = _t2 ;
+    uint256 TotalMatches = 0;
 
-//     }
+    /// this creates the match and add it to the mapping we can change the win status later according to the results
+    function createMatch(string memory _t1, string memory _t2)
+        public
+        onlyOwner
+    {
+        matches[TotalMatches] = Match(_t1, _t2, 0);
+        TotalMatches += 1;
+    }
 
-//     function getTeams() public view returns(string _t1,string _t2) {
-//         return team1,team2 ;
+    // to get the match details we want
+    function getMatch(uint256 _id) public view returns (Match memory) {
+        return matches[_id];
+    }
 
-//     }
-
-
-// }
+    /// to declare the result
+    function changeResult(uint256 _id, uint256 _teamId) public onlyOwner {
+        Match memory _match = matches[_id];
+        _match.win = _teamId;
+    }
+}

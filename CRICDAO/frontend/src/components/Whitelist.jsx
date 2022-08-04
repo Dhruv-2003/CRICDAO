@@ -7,6 +7,7 @@ import styles from "../../styles/Home.module.css";
 import { useContract, useSigner, useProvider, useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
+/// Whitelist the Users to allow him to continue minting the NFT
 const Whitelist = () => {
   const { address, isConnected } = useAccount();
   const [walletConnected, setWalletConnected] = useState(false);
