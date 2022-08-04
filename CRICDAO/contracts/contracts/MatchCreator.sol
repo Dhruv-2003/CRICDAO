@@ -35,4 +35,8 @@ contract MatchCreator is Ownable {
         Match memory _match = matches[_id];
         _match.win = _teamId;
     }
+
+    function getResult(uint256 _id) public view returns (uint256) {
+        return matches[_id].win;
+    }
 }
