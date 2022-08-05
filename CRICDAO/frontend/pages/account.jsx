@@ -3,13 +3,14 @@ import styles from "../styles/Account.module.css";
 import Image from "next/image";
 import pfp from "../src/assets/avatar.png";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { fetchNFTs } from "../src/components/fetchNFTs";
 // account section show the Details of the User
 // Also show all the NFT owner by them , Alchemy SDK or API used to fetch the NFTs to be shown
 // For Matches , there will be a Match Contracts that , have record of each Matches
 // Show their DAO entry Status , also from the NFT status or either the Token Gating Call
 export default function account() {
+  const [NFTs, setNFTs] = useState([]);
   const [isDAOUser, setIsDAOUser] = useState(false);
   const [toggleState, setToggleState] = useState(1);
 
@@ -17,6 +18,15 @@ export default function account() {
     setToggleState(index);
     console.log(index);
   }
+
+  const RenderNFTs = () => {};
+
+  const RenderMatches = () => {};
+
+  useEffect(async () => {
+    const nfts = await fetchNFTs();
+    setNFTs(nfts);
+  });
 
   return (
     <div className={styles.container}>
@@ -31,9 +41,9 @@ export default function account() {
             <ConnectButton />
           </h1>
           <ul>
-            <li>Rewards Earned</li>
+            {/* <li>Rewards Earned</li>
             <li>NFTs Owned</li>
-            <li>Matches Played</li>
+            <li>Matches Played</li> */}
           </ul>
           <p></p>
         </div>
