@@ -2,7 +2,7 @@ const { ethers } = require("hardhat");
 require("dotenv").config({ path: ".env" });
 
 async function main() {
-  const MatchContract = "0xfDA0991fB004C2AA5B522317755B1D2F8384054B";
+  const MatchContract = "0x0F796bd6F95855C6aD6A72EcdBd53BE24DDA0399";
 
   const CricGame = await ethers.getContractFactory("CricGame");
   // deploy the contract

@@ -14,6 +14,8 @@ contract MatchCreator is Ownable {
     /// mapping from match id --> struct Match
     mapping(uint256 => Match) public matches;
 
+    /// just pushing all the records so that it can be returned later
+    Match[] public matchesrecord;
     uint256 TotalMatches = 0;
 
     /// this creates the match and add it to the mapping we can change the win status later according to the results
@@ -22,12 +24,17 @@ contract MatchCreator is Ownable {
         onlyOwner
     {
         matches[TotalMatches] = Match(_t1, _t2, 0);
+        matchesrecord.push(Match(_t1, _t2, 0));
         TotalMatches += 1;
     }
 
     // to get the match details we want
     function getMatch(uint256 _id) public view returns (Match memory) {
         return matches[_id];
+    }
+
+    function getRecord() public view returns (Match[] memory) {
+        return matchesrecord;
     }
 
     /// to declare the result
@@ -39,4 +46,8 @@ contract MatchCreator is Ownable {
     function getResult(uint256 _id) public view returns (uint256) {
         return matches[_id].win;
     }
+
+    // function checkMatch(uint256 _id) public view returns(bool) {
+    //     return (matches[_id].win != 0) ;
+    // }
 }

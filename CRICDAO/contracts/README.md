@@ -15,10 +15,11 @@
 
 -- Match Contract
 Match Contract Address: 0xfDA0991fB004C2AA5B522317755B1D2F8384054B
+Match Contract Address: 0x0F796bd6F95855C6aD6A72EcdBd53BE24DDA0399
 
 -- Game Contract
 Game Contract Address: 0xB5747aB04096133Cae100C1178Fe917Dbb82e541
-
+Game Contract Address: 0x9CF07c062D7f3804857B9152dE849e4a58dDc5fd
 https://ipfs.io/ipfs/QmRxmqKawq9CDkhDFmMvVmRpCtZZ3avvTeH8NxGBsvEHNM -- player img
 
 https://ipfs.io/ipfs/QmURR4kDrUKY7mhGPdg73eyPqG8obKdVipGpD6JPahoCi3 -- player metadata

@@ -12,9 +12,13 @@ export const CricDAOOWN_CONTRACT_ADDRESS =
 export const CricDAONFT_CONTRACT_ADDRESS =
   "0x3409A47cEfa29dA695Dd06B8B94595C9eE519b5E";
 
+export const MatchCreator_CONTRACT_ADDRESS =
+  "0x0F796bd6F95855C6aD6A72EcdBd53BE24DDA0399";
+
+export const Game_CONTRACT_ADDRESS =
+  "0x9CF07c062D7f3804857B9152dE849e4a58dDc5fd";
+
 export const Owner = "0xBF17F859989A73C55c7BA5Fefb40e63715216B9b";
-// export const CricToken_CONTRACT_ADDRESS =
-//   "0xc61DBCda31fA7BED33CA88990B11a5f1d83B7327";
 // export const CricDAO_CONTRACT_ADDRESS =
 //   "0x46C5DDED27aF44A871f70DEea3F58D53Cf6BdE23";
 
@@ -1156,5 +1160,405 @@ export const CricDAONFT_ABI = [
   {
     stateMutability: "payable",
     type: "receive",
+  },
+];
+export const Match_ABI = [
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_teamId",
+        type: "uint256",
+      },
+    ],
+    name: "changeResult",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_t1",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_t2",
+        type: "string",
+      },
+    ],
+    name: "createMatch",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_id",
+        type: "uint256",
+      },
+    ],
+    name: "getMatch",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "string",
+            name: "team1",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "team2",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "win",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct MatchCreator.Match",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getRecord",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "string",
+            name: "team1",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "team2",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "win",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct MatchCreator.Match[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_id",
+        type: "uint256",
+      },
+    ],
+    name: "getResult",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "matches",
+    outputs: [
+      {
+        internalType: "string",
+        name: "team1",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "team2",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "win",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "matchesrecord",
+    outputs: [
+      {
+        internalType: "string",
+        name: "team1",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "team2",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "win",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
+export const Game_ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_match",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_matchId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_teamId",
+        type: "uint256",
+      },
+    ],
+    name: "bid",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "bidPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "bids",
+    outputs: [
+      {
+        internalType: "address",
+        name: "team1",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "team2",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "inProcess",
+        type: "bool",
+      },
+      {
+        internalType: "uint256",
+        name: "startedAt",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "endedAt",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_matchId",
+        type: "uint256",
+      },
+    ],
+    name: "endGame",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_matchId",
+        type: "uint256",
+      },
+    ],
+    name: "startBidding",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
 ];
