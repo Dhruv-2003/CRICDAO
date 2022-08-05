@@ -18,7 +18,7 @@ export default function () {
           <Image src={logo_Australia} />
         </div>
       </span>
-      <p>Lorem ipsum dolor sit perspiciatis ea rem eos itaque sapiente voluptatum? Cupiditate iure recusandae atque blanditiis labore exercitationem animi porro.</p>
+      {/* <p>Lorem ipsum dolor sit perspiciatis ea rem eos itaque sapiente voluptatum? Cupiditate iure recusandae atque blanditiis labore exercitationem animi porro.</p> */}
       <button className={styles.play_btn}>Predict</button>
     </div>
   );
