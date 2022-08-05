@@ -13,6 +13,12 @@
 -- CricDAO contract
 / CricDAO deployed to: 0x46C5DDED27aF44A871f70DEea3F58D53Cf6BdE23
 
+-- Match Contract
+Match Contract Address: 0xfDA0991fB004C2AA5B522317755B1D2F8384054B
+
+-- Game Contract
+Game Contract Address: 0xB5747aB04096133Cae100C1178Fe917Dbb82e541
+
 https://ipfs.io/ipfs/QmRxmqKawq9CDkhDFmMvVmRpCtZZ3avvTeH8NxGBsvEHNM -- player img
 
 https://ipfs.io/ipfs/QmURR4kDrUKY7mhGPdg73eyPqG8obKdVipGpD6JPahoCi3 -- player metadata

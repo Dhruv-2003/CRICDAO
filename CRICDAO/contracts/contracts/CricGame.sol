@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 interface IMatchCreator {
     function getResult(uint256 _id) external view returns (uint256);
 
-    function getMatch(uint256 _id) external view returns (Match memory);
+    // function getMatch(uint256 _id) external view returns (bool);
 }
 
 /// This contract will include the fetch score of matches from chainlink oracle , but as it is not yet present , we are leaving this.
@@ -47,8 +47,8 @@ contract CricGame is Ownable {
     }
 
     function startBidding(uint256 _matchId) public onlyOwner {
-        require(matches.getMatch(_matchId) != 0, "The matchId is not valid");
-        matches[_matchId] = Bid([], [], true, block.timestamp, 0);
+        // require(matches.getMatch(_matchId) != 0, "The matchId is not valid");
+        bids[_matchId] = Bid(address(0), address(0), true, block.timestamp, 0);
     }
 
     function bid(uint256 _matchId, uint256 _teamId)
@@ -74,7 +74,7 @@ contract CricGame is Ownable {
         require(winTeam != 0, "Match not yet ended");
         bool success;
         /// shutting down the bidding
-        Bid memory _bid = matches[_matchId];
+        Bid memory _bid = bids[_matchId];
         _bid.inProcess == false;
         _bid.endedAt == block.timestamp;
 
