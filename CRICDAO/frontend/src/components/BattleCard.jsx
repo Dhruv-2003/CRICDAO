@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.css";
 import Image from "next/image";
 import logo_India from "../assets/India.png";
 import logo_Australia from "../assets/Australia_Logo.jpg";
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 export default function () {
   return (
     <div className={styles.battle_card}>
