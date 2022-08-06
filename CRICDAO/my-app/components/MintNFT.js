@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./MintNFT.module.css";
+import styles2 from "./Home.module.css";
 import gif from "../public/cricDAO.gif";
 import Image from "next/image";
 import { utils } from "ethers";
@@ -47,7 +48,7 @@ export default function MintNFT() {
               <li>Token</li>
               <li>Match prediction</li>
             </ul>
-            <button onClick={mintNFT} className={styles.mintBtn}>
+            <button onClick={mintNFT} className={styles2.redirect_button}>
               Mint
             </button>
           </div>
