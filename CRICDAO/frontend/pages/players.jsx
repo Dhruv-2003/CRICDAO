@@ -12,18 +12,15 @@ export default function players() {
 
   const RenderNFTs = () => {};
 
-  useEffect(async () => {
-    const nfts = await fetchNFTs();
-    setNFTs(nfts);
-  });
+  // useEffect(async () => {
+  //   const nfts = await fetchNFTs();
+  //   setNFTs(nfts);
+  // });
 
   return (
     <div className={styles.container}>
       <h1>Player NFTs</h1>
       <div className={styles.main}>
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
         <PlayerCard />
         <PlayerCard />
       </div>

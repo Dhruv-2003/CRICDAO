@@ -17,10 +17,18 @@
     );
   
     background-color: #b3ffeb;
+    flex-direction: column;
   
+  }
+
+  .container h1 {
+    margin: 15px auto;
+
   }
   
   .main {
+    margin: 0 auto;
+    min-height: 76vh;
     padding: 0 2rem;
     /* margin-top: 120px;
       margin-bottom: 40px;

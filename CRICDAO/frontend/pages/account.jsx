@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "../styles/Account.module.css";
 import Image from "next/image";
 import pfp from "../src/assets/avatar.png";
@@ -23,10 +22,10 @@ export default function account() {
 
   const RenderMatches = () => {};
 
-  useEffect(async () => {
-    const nfts = await fetchNFTs();
-    setNFTs(nfts);
-  });
+  // useEffect(async () => {
+  //   const nfts = await fetchNFTs();
+  //   setNFTs(nfts);
+  // });
 
   return (
     <div className={styles.container}>

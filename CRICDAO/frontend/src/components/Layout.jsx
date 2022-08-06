@@ -48,9 +48,9 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li className={styles.navitem}>
-              <button className={styles.connect}>
+              {/* <button className={styles.connect}> */}
                 <ConnectButton />
-              </button>
+              {/* </button> */}
             </li>
           </ul>
 

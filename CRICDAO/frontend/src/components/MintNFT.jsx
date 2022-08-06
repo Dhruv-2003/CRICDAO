@@ -88,9 +88,9 @@ const MintNFT = () => {
       }
     } else {
       return (
-        <button className={styles.whitelist_btn}>
+        // <button className={styles.whitelist_btn}>
           <ConnectButton />
-        </button>
+        //  </button>
       );
     }
   };

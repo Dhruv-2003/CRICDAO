@@ -21,9 +21,9 @@ export default function Home() {
             You can trade player NFTs in the marketplace and participate in
             battles where you can predict macth result and win rewards.
           </p>
-          <button className={styles.redirect_button}>
+          {/* <button className={styles.redirect_button}> */}
             <Whitelist />
-          </button>
+          {/* </button> */}
         </div>
         <div className={styles.hero_image}>
           <Image src={hero} />
@@ -43,7 +43,7 @@ export default function Home() {
           <li>You can buy Player NFTs , trade and play games with them.</li>
           <li>You can also predict match result and win rewards</li>
         </div>
-        <button className={styles.redirect_button}>Join CricDAO</button>
+        {/* <button className={styles.redirect_button}>Join CricDAO</button> */}
       </div>
 
       <div className={styles.mint_heading}>
@@ -56,9 +56,9 @@ export default function Home() {
             <li>Battles</li>
             <li>Token</li>
             <li>And more future perks</li>
-            <button className={styles.redirect_button}>
+            {/* <button className={styles.redirect_button}> */}
               <MintNFT />
-            </button>
+            {/* </button> */}
           </div>
           <div className={styles.nft}>
             <Image className={styles.nft} src={nft} />

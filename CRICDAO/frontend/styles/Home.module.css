@@ -374,6 +374,7 @@
   transition: ease-in-out 0.3s;
 }
 
+
 .battle_card:hover {
   transform: scale(1.05);
 }
@@ -388,8 +389,10 @@
 }
 
 .team_logo {
-  max-width: 100px;
-  margin: 20px;
+  /* max-width: 100px; */
+  margin: auto 20px;
+  color: #57f1ff;
+  
 }
 
 .vs {
@@ -398,6 +401,7 @@
 }
 
 .play_btn {
+  margin: auto 15px;
   font-size: 16px;
   margin-bottom: 20px;
   padding: 8px 12px;

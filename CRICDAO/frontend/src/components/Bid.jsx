@@ -8,7 +8,7 @@ import styles from "../../styles/Home.module.css";
 import { ethers, utils } from "ethers";
 
 /// setting this bid button wherever we want and in a match we want
-const Bid = async (props) => {
+ export default function Bid(props) {
   // match created according to the contract
   const [matchID, setMatchID] = useState(0);
 
@@ -19,15 +19,15 @@ const Bid = async (props) => {
   const { data: signer } = useSigner();
   const provider = useProvider();
   const contract = useContract({
-    addressOrName: Game_CONTRACT_ADDRESSA,
+    addressOrName: Game_CONTRACT_ADDRESS,
     contractInterface: Game_ABI,
     signerOrProvider: signer || provider,
   });
 
-  const PlaceBid = (teamId) => {
+  const PlaceBid = async (teamId) => {
     try {
       console.log("bidding...");
-      const tx = contract.bid(matchID, teamId, {
+      const tx = await contract.bid(matchID, teamId, {
         value: ethers.utils.parseEther("0.05"),
       });
       console.log("bid placed");
@@ -39,8 +39,14 @@ const Bid = async (props) => {
 
   return (
     <div>
-      <button onChange={PlaceBid(1)}> Team1 </button>
-      <button onChange={PlaceBid(2)}> Team 2</button>
+      <button 
+      className={styles.play_btn}
+      onChange={PlaceBid(1)}
+      > Team1 </button>
+      <button 
+      className={styles.play_btn}
+      onChange={PlaceBid(2)}
+      > Team 2</button>
     </div>
   );
 };
