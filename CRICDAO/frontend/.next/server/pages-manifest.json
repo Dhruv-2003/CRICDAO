@@ -1,11 +1,6 @@
 {
   "/_app": "pages/_app.js",
-  "/account": "pages/account.html",
-  "/battle": "pages/battle.html",
-  "/api/hello": "pages/api/hello.js",
-  "/": "pages/index.html",
-  "/players": "pages/players.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/battle": "pages/battle.js"
 }
