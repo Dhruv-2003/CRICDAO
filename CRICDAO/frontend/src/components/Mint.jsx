@@ -3,7 +3,7 @@ import { useContract, useSigner, useProvider, useAccount } from "wagmi";
 import {
   CricDAONFT_CONTRACT_ADDRESS,
   CricDAONFT_ABI,
-  Owner,
+  OwnerAddress,
 } from "../../constants/constants";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styles from "../../styles/Home.module.css";
@@ -11,7 +11,7 @@ import { ethers, utils } from "ethers";
 
 /// Mint an NFT with _id from the NFT collection contract , which user calls
 /// Also controls Sale of NFT
-const Mint = async (_id) => {
+export default function Mint(props) {
   const { data: signer } = useSigner();
   const provider = useProvider();
   const { address } = useAccount();
@@ -24,20 +24,21 @@ const Mint = async (_id) => {
     signerOrProvider: signer || provider,
   });
 
-  const mintNFT = async (_id) => {
+  const mintNFT = async (id) => {
     try {
+      console.log(id);
       console.log("Minting the NFT for you ...");
 
       /// there are 2 conditions to check whether the presale is running or not , so according to the boolean the Minting will be processed
       if (contract.presaleStarted) {
         console.log("Congrats you are in Presale Minting");
-        const price = ether.utils.parseEther("0.05");
-        const tx = await contract.presaleMint(_id, { value: price });
+        const price = ethers.utils.parseEther("0.05");
+        const tx = await contract.presaleMint(id, { value: price });
         await tx.wait();
         console.log("Presale NFT minted for you");
       } else {
-        const price = ether.utils.parseEther("0.07");
-        const tx = await contract.presaleMint(_id, { value: price });
+        const price = ethers.utils.parseEther("0.07");
+        const tx = await contract.presaleMint(id, { value: price });
         await tx.wait();
         console.log("NFT minted for you");
       }
@@ -46,7 +47,7 @@ const Mint = async (_id) => {
     }
   };
   useEffect(() => {
-    setIsOwner(address == Owner);
+    setIsOwner(address == OwnerAddress);
   }, []);
 
   ///to start the sale , will be only shown if the user is owner and can only be called by them
@@ -63,4 +64,17 @@ const Mint = async (_id) => {
       console.log(error);
     }
   };
-};
+
+  return (
+    <div>
+      <button
+        className={styles.play_btn}
+        onClick={() => {
+          mintNFT(props._id);
+        }}
+      >
+        Mint NFT
+      </button>
+    </div>
+  );
+}

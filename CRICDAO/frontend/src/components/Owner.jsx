@@ -5,16 +5,13 @@ import {
   CricDAONFT_ABI,
   MatchCreator_CONTRACT_ADDRESS,
   Match_ABI,
-  Owner,
+  OwnerAddress,
 } from "../../constants/constants";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import styles from "../../styles/Home.module.css";
-import { ethers, utils } from "ethers";
 
 /// start the sale of NFTs
 /// add matches
 /// end matches
-const Owner = async () => {
+export default function Owner() {
   const { data: signer } = useSigner();
   const provider = useProvider();
   const { address } = useAccount();
@@ -39,7 +36,7 @@ const Owner = async () => {
   const startSale = async () => {
     try {
       console.log("starting the NFT sale");
-      const tx = await NFTcontract.startPresale;
+      const tx = await NFTcontract.startPresale();
       await tx.wait();
       console.log("sale started");
     } catch (error) {
@@ -87,13 +84,17 @@ const Owner = async () => {
     }
   };
 
+  useEffect(() => {
+    setIsOwner(address == OwnerAddress);
+  }, []);
+
   const render = () => {
     if (isOwner) {
       return (
         <div>
           <div>
-            <button onChange={startSale()}>Start NFT sale</button>
-            <button onChange={pauseSale()}></button>
+            <button onClick={startSale}>Start NFT sale</button>
+            <button onClick={pauseSale}>Pause</button>
           </div>
           <div>
             <input
@@ -108,8 +109,8 @@ const Owner = async () => {
               placeholder="Enter Team2"
               value={team2}
             ></input>
-            <button onChange={addGame()}>Add Match</button>
-            <button onChange={endGame()}>End Match</button>
+            +<button onClick={addGame}>Add Match</button>
+            <button onClick={endGame}>End Match</button>
           </div>
         </div>
       );
@@ -117,4 +118,4 @@ const Owner = async () => {
   };
 
   return <div>{render()}</div>;
-};
+}

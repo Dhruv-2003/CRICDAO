@@ -1,10 +1,11 @@
-import React, { useState } from "react";
 import styles from "../styles/Account.module.css";
 import Image from "next/image";
 import pfp from "../src/assets/avatar.png";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState, useEffect } from "react";
 import { fetchNFTs } from "../src/components/fetchNFTs";
+import Owner from "../src/components/Owner";
+
 // account section show the Details of the User
 // Also show all the NFT owner by them , Alchemy SDK or API used to fetch the NFTs to be shown
 // For Matches , there will be a Match Contracts that , have record of each Matches
@@ -23,13 +24,14 @@ export default function account() {
 
   const RenderMatches = () => {};
 
-  useEffect(async () => {
-    const nfts = await fetchNFTs();
-    setNFTs(nfts);
-  });
+  // useEffect(async () => {
+  //   const nfts = await fetchNFTs();
+  //   setNFTs(nfts);
+  // });
 
   return (
     <div className={styles.container}>
+      <Owner />
       {/* <h1>User Account</h1> */}
       <main className={styles.main}>
         <div className={styles.pfp}>

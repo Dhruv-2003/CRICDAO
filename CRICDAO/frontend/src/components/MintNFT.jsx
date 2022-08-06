@@ -32,7 +32,9 @@ const MintNFT = () => {
     try {
       console.log("Checking if DAO user ...");
       const check = await contract.balanceOf(address, 0);
-      if (check) {
+      console.log(parseInt(check._hex));
+      const value = parseInt(check._hex);
+      if (value) {
         console.log("Dao user");
         setDaoUser(true);
       } else {
@@ -47,10 +49,13 @@ const MintNFT = () => {
   const mintNFT = async () => {
     try {
       console.log("Minting the NFT ..");
+      setLoading(true);
       const mint = await contract.mint({ value: utils.parseEther("0.01") });
       await mint.wait();
       console.log("NFT minted");
       console.log("The transaction hash is : ", mint.hash);
+      setLoading(false);
+      await checkDaoUser();
     } catch (err) {
       console.error(err);
     }
@@ -88,9 +93,9 @@ const MintNFT = () => {
       }
     } else {
       return (
-        <button className={styles.whitelist_btn}>
-          <ConnectButton />
-        </button>
+        // <button className={styles.whitelist_btn}>
+        <ConnectButton />
+        //  </button>
       );
     }
   };

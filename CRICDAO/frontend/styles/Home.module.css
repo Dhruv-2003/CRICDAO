@@ -374,6 +374,7 @@
   transition: ease-in-out 0.3s;
 }
 
+
 .battle_card:hover {
   transform: scale(1.05);
 }
@@ -388,8 +389,10 @@
 }
 
 .team_logo {
-  max-width: 100px;
-  margin: 20px;
+  /* max-width: 100px; */
+  margin: auto 20px;
+  color: #57f1ff;
+  
 }
 
 .vs {
@@ -398,6 +401,7 @@
 }
 
 .play_btn {
+  margin: auto 15px;
   font-size: 16px;
   margin-bottom: 20px;
   padding: 8px 12px;
@@ -435,6 +439,8 @@
   flex-wrap: wrap;
   /* border: 2px solid red; */
   max-width: 500px;
+  /* width: 300px; */
+  min-width: 350px;
   margin: 25px;
   padding: 25px;
   border-radius: 15px;
@@ -451,6 +457,11 @@
   text-align: center;
 }
 
+.player_card * {
+  margin: 5px;
+  /* padding: 0; */
+}
+
 .battle {
   display: flex;
   justify-content: center;
@@ -461,8 +472,8 @@
 }
 
 .player_img {
-  max-width: 300px;
-  margin: 20px;
+  max-width: 150px;
+  margin: 10px auto;
 }
 
 @media (max-width: 767.98px) {
@@ -526,6 +537,11 @@
     flex-direction: column-reverse;
     text-align: center;
     padding: 4rem 1rem ;
+  }
+
+  .player_card {
+    width: 100%;
+    margin: 10px 0 ;
   }
   
   .hero_section p {
