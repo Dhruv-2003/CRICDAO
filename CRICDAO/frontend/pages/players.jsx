@@ -3,6 +3,7 @@ import PlayerCard from "../src/components/PlayerCard";
 import Player from "../src/components/PlayerCard";
 import styles from "../styles/Players.module.css";
 import { fetchNFTs } from "../src/components/fetchNFTs";
+import { player } from "../src/data/players";
 
 /// we have to render all the NFTs in our collection
 //. we will update this to only those NFTs which are purchased
@@ -21,8 +22,21 @@ export default function players() {
     <div className={styles.container}>
       <h1>Player NFTs</h1>
       <div className={styles.main}>
-        <PlayerCard />
-        <PlayerCard />
+        {player.map((data, key) => {
+          return (
+            <>
+              <PlayerCard
+                name={data.name}
+                number={data.No}
+                image={data.image}
+                position={data.position}
+                description={data.description}
+                rating={data.rating}
+              />
+            </>
+          );
+        })}
+        {/* <PlayerCard /> */}
       </div>
     </div>
   );
