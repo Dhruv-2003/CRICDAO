@@ -76,7 +76,7 @@ const MintNFT = () => {
     if (walletConnected) {
       if (daoUser) {
         return (
-          <div className={styles.description2}>
+          <div className={styles.whitelist_btn}>
             Thanks for joining the DAO !
           </div>
         );
@@ -85,7 +85,7 @@ const MintNFT = () => {
       } else {
         return (
           <>
-            <button onClick={mintNFT} className={styles.whitelist_btn}>
+            <button onClick={mintNFT} className={styles.redirect_button}>
               Mint NFT
             </button>
           </>

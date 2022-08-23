@@ -95,7 +95,7 @@ const Whitelist = () => {
           <>
             <button
               onClick={addAddressToWhitelist}
-              className={styles.whitelist_btn}
+              className={styles.redirect_button}
             >
               Join Whitelist
             </button>
@@ -105,7 +105,7 @@ const Whitelist = () => {
     } else {
       return (
         <>
-          <div className={styles.whitelist_btn}>
+          <div className={styles.redirect_button}>
             <ConnectButton />
           </div>
         </>
