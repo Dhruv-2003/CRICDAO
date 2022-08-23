@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "../assets/logo1.svg";
 import discord from "../assets/discord.svg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import UnstoppableDomain from "./UnstoppableDomain"
 
 export default function Layout({ children }) {
   const [isActive, setIsActive] = useState(false);
@@ -49,7 +50,8 @@ export default function Layout({ children }) {
             </li>
             <li className={styles.navitem}>
               {/* <button className={styles.connect}> */}
-                <ConnectButton />
+              {/* <ConnectButton /> */}
+              <UnstoppableDomain />
               {/* </button> */}
             </li>
           </ul>
