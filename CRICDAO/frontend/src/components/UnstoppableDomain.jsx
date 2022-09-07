@@ -5,7 +5,7 @@ import UAuth from "@uauth/js"
 
 const unstoppableauth = new UAuth({
     clientID: "b4e491f0-4c0b-4c20-bb52-8a41d9b79b89",
-    redirectUri: "http://localhost:3000",
+    redirectUri: "https://cricdao-final.vercel.app/",
 })
 
 function UnstoppableDomain() {
